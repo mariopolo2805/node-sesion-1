@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./scripts/server.js",
+    "create-files": "node ./scripts/create-files.js",
+    "hello-world": "echo '¡Hola, mundo!'",
+    "pre-commit": "lint-staged",
+    "prepare": "husky"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +16,16 @@
     "cors": "^2.8.5"
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

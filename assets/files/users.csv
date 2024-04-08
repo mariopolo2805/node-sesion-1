@@ -1,0 +1,6 @@
+id;name;isAdmin;age
+1;John;true;30
+2;Jane;false;25
+3;Doe;true;33
+4;Smith;false;40
+5;Brown;true;35
