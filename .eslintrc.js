@@ -6,7 +6,9 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'prettier'
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
   overrides: [
     {
@@ -18,6 +20,15 @@ module.exports = {
         sourceType: 'script',
       },
     },
+    {
+      files: ['*.{ts,tsx}'],
+      parser: '@typescript-eslint/parser',
+      plugins: ['@typescript-eslint'],
+      parserOptions: {
+        project: './tsconfig.json',
+        parser: '@typescript-eslint/parser',
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -25,5 +36,6 @@ module.exports = {
   rules: {
     semi: [2, 'always'],
     quotes: ['error', 'single', { avoidEscape: true }],
+    '@typescript-eslint/no-var-requires': ['off'],
   },
 };

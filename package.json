@@ -5,26 +5,40 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./scripts/server.js",
+    "server": "node ./dist/",
+    "dev": "nodemon ./scripts/server.js",
+    "dev-ts": "nodemon -e ts --exec \"npm run build && npm run server\"",
+    "build": "tsc -p tsconfig.json",
     "create-files": "node ./scripts/create-files.js",
     "hello-world": "echo '¡Hola, mundo!'",
+    "lint": "eslint . --ext .ts",
     "pre-commit": "lint-staged",
     "prepare": "husky"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^20.12.7",
     "cors": "^2.8.5"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
+      "prettier --write"
+    ],
+    "*.ts": [
+      "eslint --fix --ext .ts",
       "prettier --write"
     ]
   }
